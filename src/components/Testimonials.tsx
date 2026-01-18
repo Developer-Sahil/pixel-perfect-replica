@@ -36,10 +36,10 @@ const Testimonials = () => {
             Reviews
           </span>
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-card-foreground mb-4">
-            What People Say
+            What To Expect
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Join thousands of satisfied customers who've made THREADCRAFT their go-to brand.
+            Here's the experience we're committed to delivering with every order.
           </p>
         </div>
 
@@ -83,13 +83,13 @@ const Testimonials = () => {
           <div className="flex flex-wrap justify-center items-center gap-12 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Star className="h-5 w-5 fill-primary text-primary" />
-              <span className="font-medium">4.9/5 Average Rating</span>
+              <span className="font-medium">5-Star Quality Commitment</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-medium">2,500+ Reviews</span>
+              <span className="font-medium">100% Satisfaction Guaranteed</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-medium">Trusted by 50K+ Customers</span>
+              <span className="font-medium">30-Day Returns</span>
             </div>
           </div>
         </div>

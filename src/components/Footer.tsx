@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <a href="/" className="text-2xl font-bold tracking-tight font-serif">
-              THREADCRAFT
+              Kingfando Store
             </a>
             <p className="mt-4 text-background/70 max-w-sm">
               Premium streetwear for those who refuse to blend in. 
@@ -107,7 +107,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/60">
-            © 2026 THREADCRAFT. All rights reserved.
+            © 2025 Kingfando Store. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-background/60">
             <a href="#" className="hover:text-background transition-colors">

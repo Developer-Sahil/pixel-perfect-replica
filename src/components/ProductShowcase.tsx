@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
@@ -7,41 +8,37 @@ import product4 from "@/assets/product-4.jpg";
 
 const products = [
   {
-    id: 1,
+    id: "1",
     name: "Midnight Essential",
     category: "Basics",
     price: "$49",
     image: product1,
-    shopifyUrl: "https://shopify.com",
   },
   {
-    id: 2,
+    id: "2",
     name: "Cloud Nine",
     category: "Premium",
     price: "$59",
     image: product2,
-    shopifyUrl: "https://shopify.com",
   },
   {
-    id: 3,
+    id: "3",
     name: "Urban Fog",
     category: "Street",
     price: "$54",
     image: product3,
-    shopifyUrl: "https://shopify.com",
   },
   {
-    id: 4,
+    id: "4",
     name: "Deep Ocean",
     category: "Limited",
     price: "$69",
     image: product4,
-    shopifyUrl: "https://shopify.com",
   },
 ];
 
 const ProductShowcase = () => {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <section id="collection" className="py-24 bg-card">
@@ -61,11 +58,9 @@ const ProductShowcase = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <a
+            <Link
               key={product.id}
-              href={product.shopifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              to={`/product/${product.id}`}
               className="group relative block"
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -84,7 +79,7 @@ const ProductShowcase = () => {
                   }`}
                 >
                   <span className="flex items-center gap-2 text-primary-foreground font-medium">
-                    View Product <ExternalLink className="h-4 w-4" />
+                    View Product <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>
 
@@ -100,19 +95,8 @@ const ProductShowcase = () => {
                 </h3>
                 <p className="text-muted-foreground font-semibold">{product.price}</p>
               </div>
-            </a>
+            </Link>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a
-            href="https://shopify.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
-          >
-            View All Products <ExternalLink className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>

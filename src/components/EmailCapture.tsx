@@ -35,7 +35,7 @@ const EmailCapture = () => {
           </h2>
           
           <p className="text-primary-foreground/80 text-lg mb-8">
-            Join 50,000+ style enthusiasts. Get early access to new drops, 
+            Be among the first to shop our collection. Get early access to new drops, 
             exclusive discounts, and streetwear inspiration delivered to your inbox.
           </p>
 

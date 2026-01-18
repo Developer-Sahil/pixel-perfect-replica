@@ -47,16 +47,16 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="flex gap-12 mt-16 pt-8 border-t border-border/50 animate-fade-in animation-delay-600">
             <div>
-              <p className="text-3xl font-bold text-foreground">50K+</p>
-              <p className="text-sm text-muted-foreground">Happy Customers</p>
-            </div>
-            <div>
               <p className="text-3xl font-bold text-foreground">100%</p>
               <p className="text-sm text-muted-foreground">Premium Cotton</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-foreground">24h</p>
               <p className="text-sm text-muted-foreground">Fast Shipping</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-foreground">30-Day</p>
+              <p className="text-sm text-muted-foreground">Easy Returns</p>
             </div>
           </div>
         </div>

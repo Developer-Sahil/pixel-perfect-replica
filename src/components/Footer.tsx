@@ -1,6 +1,42 @@
 import { Instagram, Twitter, Facebook, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+
+const emailSchema = z.string().trim().email({ message: "Please enter a valid email address" }).max(255, { message: "Email must be less than 255 characters" });
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      toast({
+        title: "Invalid email",
+        description: result.error.errors[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setIsLoading(false);
+    
+    toast({
+      title: "Subscribed!",
+      description: "You've been added to our newsletter.",
+    });
+    setEmail("");
+  };
+
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
@@ -42,6 +78,28 @@ const Footer = () => {
               >
                 <Facebook className="h-5 w-5" />
               </a>
+            </div>
+            
+            {/* Newsletter Signup */}
+            <div className="mt-8">
+              <h3 className="font-semibold mb-3">Join Our Newsletter</h3>
+              <p className="text-background/70 text-sm mb-4">Get exclusive drops and updates.</p>
+              <form onSubmit={handleSubscribe} className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-background/10 border-background/20 text-background placeholder:text-background/50 focus:border-background/40"
+                />
+                <Button 
+                  type="submit" 
+                  disabled={isLoading}
+                  className="bg-background text-foreground hover:bg-background/90"
+                >
+                  {isLoading ? "..." : "Subscribe"}
+                </Button>
+              </form>
             </div>
           </div>
 

@@ -82,17 +82,17 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
+                <a href="/shipping-returns" className="text-background/70 hover:text-background transition-colors">
                   Shipping & Returns
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
+                <a href="/faq" className="text-background/70 hover:text-background transition-colors">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@kingfando.com" className="text-background/70 hover:text-background transition-colors">
+                <a href="/contact" className="text-background/70 hover:text-background transition-colors">
                   Contact Us
                 </a>
               </li>
@@ -105,10 +105,10 @@ const Footer = () => {
             © 2025 Kingfando Store. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-background/60">
-            <a href="#" className="hover:text-background transition-colors">
+            <a href="/privacy-policy" className="hover:text-background transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-background transition-colors">
+            <a href="/terms-of-service" className="hover:text-background transition-colors">
               Terms of Service
             </a>
           </div>

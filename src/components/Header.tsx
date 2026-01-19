@@ -20,9 +20,6 @@ const Header = () => {
           <a href="#story" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Our Story
           </a>
-          <a href="#reviews" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Reviews
-          </a>
           <Button variant="default" size="sm" asChild>
             <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">
               Shop Now
@@ -57,13 +54,6 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Our Story
-            </a>
-            <a
-              href="#reviews"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Reviews
             </a>
             <Button variant="default" size="sm" className="w-fit" asChild>
               <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">

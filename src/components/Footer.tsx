@@ -69,11 +69,6 @@ const Footer = () => {
                   Our Story
                 </a>
               </li>
-              <li>
-                <a href="#reviews" className="text-background/70 hover:text-background transition-colors">
-                  Reviews
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -82,7 +77,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Support</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
+                <a href="/size-guide" className="text-background/70 hover:text-background transition-colors">
                   Size Guide
                 </a>
               </li>
@@ -97,7 +92,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@threadcraft.com" className="text-background/70 hover:text-background transition-colors">
+                <a href="mailto:hello@kingfando.com" className="text-background/70 hover:text-background transition-colors">
                   Contact Us
                 </a>
               </li>

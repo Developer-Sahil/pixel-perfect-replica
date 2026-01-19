@@ -1,41 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-
-const products = [
-  {
-    id: "1",
-    name: "Midnight Essential",
-    category: "Basics",
-    price: "$49",
-    image: product1,
-  },
-  {
-    id: "2",
-    name: "Cloud Nine",
-    category: "Premium",
-    price: "$59",
-    image: product2,
-  },
-  {
-    id: "3",
-    name: "Urban Fog",
-    category: "Street",
-    price: "$54",
-    image: product3,
-  },
-  {
-    id: "4",
-    name: "Deep Ocean",
-    category: "Limited",
-    price: "$69",
-    image: product4,
-  },
-];
+import { products } from "@/data/products";
 
 const ProductShowcase = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -93,7 +59,7 @@ const ProductShowcase = () => {
                 <h3 className="text-lg font-medium text-card-foreground group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
-                <p className="text-muted-foreground font-semibold">{product.price}</p>
+                <p className="text-muted-foreground font-semibold">${product.price}</p>
               </div>
             </Link>
           ))}

@@ -2,8 +2,9 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductShowcase from "@/components/ProductShowcase";
 import BrandStory from "@/components/BrandStory";
-import Testimonials from "@/components/Testimonials";
-import EmailCapture from "@/components/EmailCapture";
+// import Testimonials from "@/components/Testimonials";
+// import EmailCapture from "@/components/EmailCapture";
+import ProductionTransparency from "@/components/ProductionTransparency";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,8 +15,9 @@ const Index = () => {
         <HeroSection />
         <ProductShowcase />
         <BrandStory />
-        <Testimonials />
-        <EmailCapture />
+        <ProductionTransparency />
+        {/* <Testimonials /> */}
+        {/* <EmailCapture /> */}
       </main>
       <Footer />
     </div>

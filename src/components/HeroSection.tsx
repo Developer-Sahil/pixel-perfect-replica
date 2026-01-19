@@ -18,10 +18,6 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
         <div className="max-w-2xl">
-          <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-6 animate-fade-in">
-            New Collection 2026
-          </span>
-          
           <h1 className="text-5xl md:text-7xl font-bold font-serif tracking-tight text-foreground mb-6 animate-slide-up">
             Wear Your
             <span className="block text-primary">Identity</span>
@@ -45,18 +41,18 @@ const HeroSection = () => {
           </div>
 
           {/* Stats */}
-          <div className="flex gap-12 mt-16 pt-8 border-t border-border/50 animate-fade-in animation-delay-600">
+          <div className="flex flex-wrap gap-8 md:gap-12 mt-16 pt-8 border-t border-border/50 animate-fade-in animation-delay-600">
             <div>
               <p className="text-3xl font-bold text-foreground">100%</p>
               <p className="text-sm text-muted-foreground">Premium Cotton</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-foreground">24h</p>
-              <p className="text-sm text-muted-foreground">Fast Shipping</p>
+              <p className="text-2xl md:text-3xl font-bold text-foreground">Made to</p>
+              <p className="text-sm text-muted-foreground">Order</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-foreground">30-Day</p>
-              <p className="text-sm text-muted-foreground">Easy Returns</p>
+              <p className="text-xl md:text-2xl font-bold text-foreground leading-tight">Printed on Premium</p>
+              <p className="text-sm text-muted-foreground">220 GSM Cotton</p>
             </div>
           </div>
         </div>

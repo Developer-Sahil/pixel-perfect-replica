@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
@@ -43,20 +44,27 @@ const ProductShowcase = () => {
                     }`}
                 >
                   <span className="flex items-center gap-2 text-white font-medium">
+                    View Product <ArrowRight className="h-4 w-4" />
                   </span>
-                </div >
-
-                <div className="mt-4">
-                  <h3 className="text-lg font-medium text-card-foreground group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-muted-foreground font-semibold">${product.price}</p>
                 </div>
-            </Link >
+
+                {/* Category Badge */}
+                <span className="absolute top-4 left-4 px-3 py-1 bg-background/90 backdrop-blur-sm text-xs font-medium rounded-full text-foreground">
+                  {product.category}
+                </span>
+              </div>
+
+              <div className="mt-4">
+                <h3 className="text-lg font-medium text-card-foreground group-hover:text-primary transition-colors">
+                  {product.name}
+                </h3>
+                <p className="text-muted-foreground font-semibold">${product.price}</p>
+              </div>
+            </Link>
           ))}
-        </div >
-      </div >
-    </section >
+        </div>
+      </div>
+    </section>
   );
 };
 

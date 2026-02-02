@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-tshirt.jpg";
+import heroImage from "@/assets/hero-tshirt.png";
 
 const HeroSection = () => {
   return (
@@ -18,13 +18,20 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
         <div className="max-w-2xl">
+<<<<<<< Updated upstream
+=======
+          <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-6 animate-fade-in">
+            New Collection 2026
+          </span>
+
+>>>>>>> Stashed changes
           <h1 className="text-5xl md:text-7xl font-bold font-serif tracking-tight text-foreground mb-6 animate-slide-up">
             Wear Your
             <span className="block text-primary">Identity</span>
           </h1>
-          
+
           <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-8 animate-slide-up animation-delay-200">
-            Premium streetwear crafted for those who refuse to blend in. 
+            Premium streetwear crafted for those who refuse to blend in.
             Every thread tells a story of rebellion, quality, and uncompromising style.
           </p>
 

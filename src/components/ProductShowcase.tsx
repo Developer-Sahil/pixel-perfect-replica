@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
@@ -17,7 +16,7 @@ const ProductShowcase = () => {
             The Collection
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Each piece is designed with intention, crafted with premium materials, 
+            Each piece is designed with intention, crafted with premium materials,
             and built to make a statement.
           </p>
         </div>
@@ -37,35 +36,27 @@ const ProductShowcase = () => {
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                
+
                 {/* Overlay */}
-                <div 
-                  className={`absolute inset-0 bg-foreground/60 flex items-center justify-center transition-opacity duration-300 ${
-                    hoveredId === product.id ? 'opacity-100' : 'opacity-0'
-                  }`}
+                <div
+                  className={`absolute inset-0 bg-black/80 flex items-center justify-center transition-opacity duration-300 ${hoveredId === product.id ? 'opacity-100' : 'opacity-0'
+                    }`}
                 >
-                  <span className="flex items-center gap-2 text-primary-foreground font-medium">
-                    View Product <ArrowRight className="h-4 w-4" />
+                  <span className="flex items-center gap-2 text-white font-medium">
                   </span>
+                </div >
+
+                <div className="mt-4">
+                  <h3 className="text-lg font-medium text-card-foreground group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-muted-foreground font-semibold">${product.price}</p>
                 </div>
-
-                {/* Category Badge */}
-                <span className="absolute top-4 left-4 px-3 py-1 bg-background/90 backdrop-blur-sm text-xs font-medium rounded-full text-foreground">
-                  {product.category}
-                </span>
-              </div>
-
-              <div className="mt-4">
-                <h3 className="text-lg font-medium text-card-foreground group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-muted-foreground font-semibold">${product.price}</p>
-              </div>
-            </Link>
+            </Link >
           ))}
-        </div>
-      </div>
-    </section>
+        </div >
+      </div >
+    </section >
   );
 };
 

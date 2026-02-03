@@ -66,19 +66,19 @@ const BrandStory = () => {
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent to-primary/10 p-8 flex items-center justify-center">
               <div className="text-center">
                 <img src={Logo} alt="TwistedPlant" className="w-full max-w-[200px] h-auto mx-auto" />
-                <p className="text-xl font-medium text-foreground mt-4">Est. 2025</p>
+                <p className="text-xl font-medium text-foreground mt-4">Est. 2026</p>
               </div>
             </div>
 
             {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-6 shadow-lg border border-border">
-              <p className="text-3xl font-bold text-primary">Premium</p>
-              <p className="text-sm text-muted-foreground">Quality Guaranteed</p>
+            <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-4 md:p-6 shadow-lg border border-border transition-transform hover:scale-105">
+              <p className="text-2xl md:text-3xl font-bold text-primary">Premium</p>
+              <p className="text-xs md:text-sm text-muted-foreground">Quality Guaranteed</p>
             </div>
 
-            <div className="absolute -top-6 -right-6 bg-card rounded-xl p-6 shadow-lg border border-border">
-              <p className="text-3xl font-bold text-primary">New</p>
-              <p className="text-sm text-muted-foreground">Fresh Designs</p>
+            <div className="absolute -top-6 -right-6 bg-card rounded-xl p-4 md:p-6 shadow-lg border border-border transition-transform hover:scale-105">
+              <p className="text-2xl md:text-3xl font-bold text-primary">New</p>
+              <p className="text-xs md:text-sm text-muted-foreground">Fresh Designs</p>
             </div>
           </div>
         </div>

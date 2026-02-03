@@ -2,8 +2,8 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductShowcase from "@/components/ProductShowcase";
 import BrandStory from "@/components/BrandStory";
-// import Testimonials from "@/components/Testimonials";
-// import EmailCapture from "@/components/EmailCapture";
+import Testimonials from "@/components/Testimonials";
+import InstagramFeed from "@/components/InstagramFeed";
 import WhyTwistedPlant from "@/components/WhyTwistedPlant";
 import ProductionTransparency from "@/components/ProductionTransparency";
 import Footer from "@/components/Footer";
@@ -18,8 +18,8 @@ const Index = () => {
         <BrandStory />
         <WhyTwistedPlant />
         <ProductionTransparency />
-        {/* <Testimonials /> */}
-        {/* <EmailCapture /> */}
+        <Testimonials />
+        <InstagramFeed />
       </main>
       <Footer />
     </div>

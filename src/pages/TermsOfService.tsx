@@ -14,7 +14,7 @@ const TermsOfService = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">1. Agreement to Terms</h2>
               <p className="text-muted-foreground leading-relaxed">
-                By accessing or using Kingfando Store's website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+                By accessing or using TwistedPlant's website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
               </p>
             </section>
 
@@ -61,21 +61,21 @@ const TermsOfService = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">7. Intellectual Property</h2>
               <p className="text-muted-foreground leading-relaxed">
-                All content on our website, including text, graphics, logos, images, and software, is the property of Kingfando Store and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.
+                All content on our website, including text, graphics, logos, images, and software, is the property of TwistedPlant and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">8. Limitation of Liability</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To the fullest extent permitted by law, Kingfando Store shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services or products.
+                To the fullest extent permitted by law, TwistedPlant shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services or products.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">9. Indemnification</h2>
               <p className="text-muted-foreground leading-relaxed">
-                You agree to indemnify and hold harmless Kingfando Store and its affiliates from any claims, damages, or expenses arising from your violation of these Terms or your use of our services.
+                You agree to indemnify and hold harmless TwistedPlant and its affiliates from any claims, damages, or expenses arising from your violation of these Terms or your use of our services.
               </p>
             </section>
 
@@ -90,8 +90,8 @@ const TermsOfService = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">11. Contact Information</h2>
               <p className="text-muted-foreground leading-relaxed">
                 For questions about these Terms, please contact us at{" "}
-                <a href="mailto:legal@kingfandostore.com" className="text-primary hover:underline">
-                  legal@kingfandostore.com
+                <a href="mailto:legal@twistedplant.com" className="text-primary hover:underline">
+                  legal@twistedplant.com
                 </a>
               </p>
             </section>

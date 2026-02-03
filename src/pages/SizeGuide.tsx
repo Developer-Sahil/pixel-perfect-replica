@@ -17,12 +17,12 @@ const SizeGuide = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -35,7 +35,7 @@ const SizeGuide = () => {
               Size Guide
             </h1>
             <p className="text-lg text-muted-foreground">
-              Find the perfect fit for your Kingfando piece. All measurements are in inches and represent the garment dimensions when laid flat.
+              Find the perfect fit for your TwistedPlant piece. All measurements are in inches and represent the garment dimensions when laid flat.
             </p>
           </div>
 
@@ -89,8 +89,8 @@ const SizeGuide = () => {
                 </thead>
                 <tbody>
                   {sizes.map((item, index) => (
-                    <tr 
-                      key={item.size} 
+                    <tr
+                      key={item.size}
                       className={`border-b border-border ${index % 2 === 0 ? 'bg-card' : 'bg-background'}`}
                     >
                       <td className="py-4 px-4 font-semibold text-foreground">{item.size}</td>
@@ -111,8 +111,8 @@ const SizeGuide = () => {
             </h2>
             <p className="text-muted-foreground mb-4">
               If you're between sizes or have specific fit concerns, we're here to help. Reach out to us at{" "}
-              <a href="mailto:hello@kingfando.com" className="text-primary hover:underline">
-                hello@kingfando.com
+              <a href="mailto:hello@twistedplant.com" className="text-primary hover:underline">
+                hello@twistedplant.com
               </a>{" "}
               and we'll help you find the perfect size.
             </p>

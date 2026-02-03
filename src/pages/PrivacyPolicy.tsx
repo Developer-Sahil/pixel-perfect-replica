@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">1. Introduction</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Welcome to Kingfando Store ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase.
+                Welcome to TwistedPlant ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase.
               </p>
             </section>
 
@@ -80,8 +80,8 @@ const PrivacyPolicy = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">8. Contact Us</h2>
               <p className="text-muted-foreground leading-relaxed">
                 If you have questions about this Privacy Policy or our privacy practices, please contact us at{" "}
-                <a href="mailto:privacy@kingfandostore.com" className="text-primary hover:underline">
-                  privacy@kingfandostore.com
+                <a href="mailto:privacy@twistedplant.com" className="text-primary hover:underline">
+                  privacy@twistedplant.com
                 </a>
               </p>
             </section>

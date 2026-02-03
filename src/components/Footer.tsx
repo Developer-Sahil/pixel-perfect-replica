@@ -41,7 +41,7 @@ const Footer = () => {
   return (
     <footer className="bg-card text-foreground py-16 border-t border-border">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <a href="/" className="block">
@@ -161,7 +161,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 TwistedPlant. All rights reserved.
+            © 2026 TwistedPlant. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="/privacy-policy" className="hover:text-foreground transition-colors">

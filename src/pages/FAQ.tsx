@@ -102,7 +102,7 @@ const FAQ = () => {
         },
         {
           q: "How do I contact customer support?",
-          a: "You can reach us via email at support@kingfandostore.com, by phone at +1 (555) 123-4567, or through the contact form on our Contact Us page. We respond within 24-48 hours.",
+          a: "You can reach us via email at support@twistedplant.com, by phone at +1 (555) 123-4567, or through the contact form on our Contact Us page. We respond within 24-48 hours.",
         },
         {
           q: "How can I unsubscribe from emails?",

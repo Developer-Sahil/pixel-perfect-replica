@@ -4,6 +4,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import Logo from "@/assets/TwistedPlant.png";
 
 const emailSchema = z.string().trim().email({ message: "Please enter a valid email address" }).max(255, { message: "Email must be less than 255 characters" });
 
@@ -43,9 +44,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <a href="/" className="text-3xl font-bold tracking-tight font-serif">
-              <span className="text-primary">Twisted</span>
-              <span className="text-background">Plant</span>
+            <a href="/" className="block">
+              <img src={Logo} alt="TwistedPlant" className="h-12 w-auto" />
             </a>
             <p className="mt-4 text-muted-foreground max-w-sm">
               Premium streetwear for those who refuse to blend in.
@@ -119,12 +119,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#collection" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="/#collection" className="text-muted-foreground hover:text-foreground transition-colors">
                   Collection
                 </a>
               </li>
               <li>
-                <a href="#story" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="/#story" className="text-muted-foreground hover:text-foreground transition-colors">
                   Our Story
                 </a>
               </li>

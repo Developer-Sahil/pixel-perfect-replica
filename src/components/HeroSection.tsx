@@ -18,13 +18,9 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
         <div className="max-w-2xl">
-<<<<<<< Updated upstream
-=======
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-6 animate-fade-in">
             New Collection 2026
           </span>
-
->>>>>>> Stashed changes
           <h1 className="text-5xl md:text-7xl font-bold font-serif tracking-tight text-foreground mb-6 animate-slide-up">
             Wear Your
             <span className="block text-primary">Identity</span>
@@ -59,7 +55,7 @@ const HeroSection = () => {
             </div>
             <div>
               <p className="text-xl md:text-2xl font-bold text-foreground leading-tight">Printed on Premium</p>
-              <p className="text-sm text-muted-foreground">220 GSM Cotton</p>
+              <p className="text-sm text-muted-foreground">Bio-Washed Cotton</p>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import BrandStory from "@/components/BrandStory";
 // import Testimonials from "@/components/Testimonials";
 // import EmailCapture from "@/components/EmailCapture";
+import WhyTwistedPlant from "@/components/WhyTwistedPlant";
 import ProductionTransparency from "@/components/ProductionTransparency";
 import Footer from "@/components/Footer";
 
@@ -15,6 +16,7 @@ const Index = () => {
         <HeroSection />
         <ProductShowcase />
         <BrandStory />
+        <WhyTwistedPlant />
         <ProductionTransparency />
         {/* <Testimonials /> */}
         {/* <EmailCapture /> */}

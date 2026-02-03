@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/assets/TwistedPlant.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,17 +9,20 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" className="text-3xl font-bold tracking-tight font-serif">
-          <span className="text-primary">Twisted</span>
-          <span className="text-foreground">Plant</span>
+        <a href="/" className="flex items-center gap-2">
+          <img src={Logo} alt="TwistedPlant" className="h-10 w-auto" />
+          <span className="text-xl font-bold tracking-tight font-serif">
+            <span className="text-primary">Twisted</span>
+            <span className="text-foreground">Plant</span>
+          </span>
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#collection" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/#collection" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Collection
           </a>
-          <a href="#story" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/#story" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Our Story
           </a>
           <Button variant="default" size="sm" asChild>
@@ -43,14 +47,14 @@ const Header = () => {
         <nav className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             <a
-              href="#collection"
+              href="/#collection"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Collection
             </a>
             <a
-              href="#story"
+              href="/#story"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >

@@ -1,21 +1,28 @@
+import { Layers, Zap, Heart } from "lucide-react";
+import Logo from "@/assets/TwistedPlant.png";
+
+const values = [
+  {
+    title: "Authenticity",
+    description: "We don't follow trends. We set our own standards.",
+    icon: Zap,
+  },
+  {
+    title: "Quality First",
+    description: "Premium materials that stand the test of time.",
+    icon: Layers,
+  },
+  {
+    title: "Community",
+    description: "Built for those who value expression and connection.",
+    icon: Heart,
+  },
+];
+
 const BrandStory = () => {
   return (
-    <section id="story" className="py-24 bg-purple-600">
+    <section id="story" className="py-24 bg-card">
       <div className="container mx-auto px-4">
-<<<<<<< Updated upstream
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold font-serif text-white mb-6">
-            Why Kingfando
-          </h2>
-          
-          <p className="text-lg md:text-xl text-purple-50 leading-relaxed">
-            Not Mass Produced. Not Trend Chasing.
-            <br />
-            Kingfando is built for those who treat clothing as identity, not decoration.
-            <br />
-            Every piece is printed on demand to reduce waste and preserve intent.
-          </p>
-=======
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
@@ -30,7 +37,7 @@ const BrandStory = () => {
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6">
               TwistedPlant started with a simple belief: everyone deserves clothing
-              that speaks as loudly as they do, without saying a word.e tired of fast fashion compromises—
+              that speaks as loudly as they do, without saying a word. We were tired of fast fashion compromises—
               flimsy fabrics, questionable ethics, and designs that fade after a few washes.
             </p>
 
@@ -58,7 +65,7 @@ const BrandStory = () => {
           <div className="relative">
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent to-primary/10 p-8 flex items-center justify-center">
               <div className="text-center">
-                <p className="text-8xl font-bold font-serif text-foreground/10">KS</p>
+                <img src={Logo} alt="TwistedPlant" className="w-full max-w-[200px] h-auto mx-auto" />
                 <p className="text-xl font-medium text-foreground mt-4">Est. 2025</p>
               </div>
             </div>
@@ -74,7 +81,6 @@ const BrandStory = () => {
               <p className="text-sm text-muted-foreground">Fresh Designs</p>
             </div>
           </div>
->>>>>>> Stashed changes
         </div>
       </div>
     </section>

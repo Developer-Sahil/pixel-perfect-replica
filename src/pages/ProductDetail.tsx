@@ -1,15 +1,63 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Star, Truck, Shield, ShoppingBag, Heart, RefreshCw } from "lucide-react";
+import { ArrowLeft, Truck, Shield, ShoppingBag, Heart, RefreshCw, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { products } from "@/data/products";
+import { fetchProductByHandle } from "@/lib/shopify";
+import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const product = products.find((p) => p.id === id);
+  const { id } = useParams<{ id: string }>();
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+  const addItem = useCartStore((s) => s.addItem);
+  const isCartLoading = useCartStore((s) => s.isLoading);
+
+  const { data: product, isLoading } = useQuery({
+    queryKey: ["shopify-product", id],
+    queryFn: () => fetchProductByHandle(id!),
+    enabled: !!id,
+  });
+
+  const handleAddToCart = async () => {
+    if (!product) return;
+    const variant = product.variants.edges[selectedVariantIdx]?.node;
+    if (!variant) return;
+    await addItem({
+      product: { node: product },
+      variantId: variant.id,
+      variantTitle: variant.title,
+      price: variant.price,
+      quantity: 1,
+      selectedOptions: variant.selectedOptions || [],
+    });
+    toast.success(`${product.title} added to cart`);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12">
+              <Skeleton className="aspect-square rounded-2xl" />
+              <div className="space-y-4">
+                <Skeleton className="h-10 w-3/4" />
+                <Skeleton className="h-8 w-1/4" />
+                <Skeleton className="h-24 w-full" />
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -24,15 +72,16 @@ const ProductDetail = () => {
     );
   }
 
+  const selectedVariant = product.variants.edges[selectedVariantIdx]?.node;
+  const image = product.images.edges[0]?.node;
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <Link 
-            to="/#collection" 
+          <Link
+            to="/#collection"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -40,82 +89,87 @@ const ProductDetail = () => {
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Product Image */}
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-card">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
+                {image ? (
+                  <img src={image.url} alt={image.altText || product.title} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-muted">
+                    <ShoppingBag className="h-16 w-16 text-muted-foreground" />
+                  </div>
+                )}
               </div>
-              <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-                {product.category}
-              </Badge>
             </div>
 
-            {/* Product Info */}
             <div className="flex flex-col">
               <div className="mb-6">
-                <h1 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-2">
-                  {product.name}
+                <h1 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-4">
+                  {product.title}
                 </h1>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                    ))}
+                <p className="text-3xl font-bold text-primary">
+                  {selectedVariant?.price.currencyCode} {parseFloat(selectedVariant?.price.amount || "0").toFixed(2)}
+                </p>
+              </div>
+
+              <p className="text-muted-foreground mb-8 leading-relaxed">{product.description}</p>
+
+              {/* Variant Selection */}
+              {product.options.map((option) => (
+                <div key={option.name} className="mb-6">
+                  <h3 className="text-sm font-medium text-foreground mb-3">{option.name}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.variants.edges.map((v, idx) => {
+                      const optVal = v.node.selectedOptions.find(o => o.name === option.name)?.value;
+                      if (!optVal) return null;
+                      // Avoid duplicates for this option
+                      const alreadyShown = product.variants.edges.findIndex(
+                        (v2) => v2.node.selectedOptions.find(o => o.name === option.name)?.value === optVal
+                      );
+                      if (alreadyShown !== idx) return null;
+
+                      const isSelected = selectedVariant?.selectedOptions.find(o => o.name === option.name)?.value === optVal;
+                      return (
+                        <button
+                          key={optVal}
+                          onClick={() => {
+                            const matchIdx = product.variants.edges.findIndex(
+                              (v2) => v2.node.selectedOptions.find(o => o.name === option.name)?.value === optVal
+                            );
+                            if (matchIdx >= 0) setSelectedVariantIdx(matchIdx);
+                          }}
+                          className={`px-4 py-2 border rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                            isSelected
+                              ? "border-primary text-primary bg-primary/10"
+                              : "border-border text-foreground hover:border-primary hover:text-primary"
+                          }`}
+                        >
+                          {optVal}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
-                <p className="text-3xl font-bold text-primary">${product.price}</p>
-              </div>
+              ))}
 
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                {product.description}
-              </p>
-
-              {/* Size Selection */}
-              <div className="mb-6">
-                <h3 className="text-sm font-medium text-foreground mb-3">Size</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      className="px-4 py-2 border border-border rounded-lg text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Color Selection */}
-              <div className="mb-8">
-                <h3 className="text-sm font-medium text-foreground mb-3">Color</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.colors.map((color) => (
-                    <button
-                      key={color}
-                      className="px-4 py-2 border border-border rounded-lg text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                    >
-                      {color}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
               <div className="flex gap-4 mb-8">
-                <Button size="lg" className="flex-1 gap-2">
-                  <ShoppingBag className="h-5 w-5" />
-                  Add to Cart
+                <Button
+                  size="lg"
+                  className="flex-1 gap-2"
+                  onClick={handleAddToCart}
+                  disabled={isCartLoading || !selectedVariant?.availableForSale}
+                >
+                  {isCartLoading ? (
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  ) : (
+                    <ShoppingBag className="h-5 w-5" />
+                  )}
+                  {selectedVariant?.availableForSale ? "Add to Cart" : "Sold Out"}
                 </Button>
                 <Button size="lg" variant="outline" className="gap-2">
                   <Heart className="h-5 w-5" />
                 </Button>
               </div>
 
-              {/* Trust Badges */}
               <div className="grid grid-cols-3 gap-4 p-4 bg-card rounded-xl">
                 <div className="flex flex-col items-center text-center">
                   <Truck className="h-5 w-5 text-primary mb-2" />
@@ -132,70 +186,8 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-
-          {/* Product Details Tabs */}
-          <div className="mt-16">
-            <Tabs defaultValue="details" className="w-full">
-              <TabsList className="w-full justify-start border-b border-border rounded-none bg-transparent p-0 mb-8">
-                <TabsTrigger 
-                  value="details" 
-                  className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-3"
-                >
-                  Details
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="care" 
-                  className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-3"
-                >
-                  Care Instructions
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="shipping" 
-                  className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-3"
-                >
-                  Shipping
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="details" className="text-muted-foreground">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Material</h4>
-                    <p>{product.material}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Fit</h4>
-                    <p>Regular fit with relaxed shoulders</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Origin</h4>
-                    <p>Ethically manufactured</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Sustainability</h4>
-                    <p>Made with eco-friendly processes</p>
-                  </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="care" className="text-muted-foreground">
-                <ul className="space-y-2">
-                  <li>• {product.care}</li>
-                  <li>• Do not bleach</li>
-                  <li>• Iron on low heat if needed</li>
-                  <li>• Do not dry clean</li>
-                </ul>
-              </TabsContent>
-              <TabsContent value="shipping" className="text-muted-foreground">
-                <div className="space-y-4">
-                  <p>We offer free standard shipping on all orders.</p>
-                  <p><strong className="text-foreground">Estimated Delivery:</strong> 5-7 business days</p>
-                  <p><strong className="text-foreground">Express Shipping:</strong> 2-3 business days (additional fee applies)</p>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

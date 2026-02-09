@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CartDrawer } from "@/components/CartDrawer";
 import Logo from "@/assets/TwistedPlant.png";
 
 const Header = () => {
@@ -25,46 +26,31 @@ const Header = () => {
           <a href="/#story" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Our Story
           </a>
-          <Button variant="default" size="sm" asChild>
-            <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">
-              Shop Now
-            </a>
-          </Button>
+          <CartDrawer />
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile */}
+        <div className="md:hidden flex items-center gap-2">
+          <CartDrawer />
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isMenuOpen && (
         <nav className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <a
-              href="/#collection"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="/#collection" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2" onClick={() => setIsMenuOpen(false)}>
               Collection
             </a>
-            <a
-              href="/#story"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="/#story" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2" onClick={() => setIsMenuOpen(false)}>
               Our Story
             </a>
-            <Button variant="default" size="sm" className="w-fit" asChild>
-              <a href="https://shopify.com" target="_blank" rel="noopener noreferrer">
-                Shop Now
-              </a>
-            </Button>
           </div>
         </nav>
       )}
